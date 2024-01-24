@@ -20,7 +20,7 @@ setup(
 	packages=['nredis'],
 	python_requires='>=3.10',
 	install_requires=[
-		'config-oc>=1.0.2,<1.1',
+		'config-oc>=1.0.3,<1.1',
 		'redis>=5.0.0,<5.1',
 		'hiredis>=2.2.3,<2.3',
 		'tools-oc>=1.2.2,<1.3'
