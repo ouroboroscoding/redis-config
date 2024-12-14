@@ -5,7 +5,7 @@ with open('README.md', 'r') as oF:
 
 setup(
 	name='namedredis',
-	version='1.0.1',
+	version='1.0.2',
 	description='A library to make sharing the same redis connection easier',
 	long_description=long_description,
 	long_description_content_type='text/markdown',
