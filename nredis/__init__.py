@@ -10,11 +10,12 @@ __email__		= "chris@ouroboroscoding.com"
 __created__		= "2023-09-23"
 
 # Limit exports
-__all__ = ['nr']
+__all__ = [ 'nr', 'reset' ]
 
 # Ouroboros imports
 from config import config
 from tools import compare
+import undefined
 
 # Pip imports
 from redis import StrictRedis
@@ -76,3 +77,37 @@ def nr(name: str) -> StrictRedis:
 
 	# Return the new connection
 	return __cons[name]['r']
+
+def reset(name: str = undefined) -> bool:
+	"""Reset
+
+	Clears all existing connections.
+
+	Arguments:
+		name (str): Optional argument, name of the connection to reset. If not \
+			set, resets all currently open connections.
+
+	Returns:
+		bool
+	"""
+
+	global __cons
+
+	# If we have no name
+	if name is undefined:
+
+		# Step through each existing connection
+		for s in __cons:
+
+			# Deleting the instance, closing the connection
+			del __cons[s]
+
+		# Return OK
+		return True
+
+	# Else, we have a specific name, try to delete it and close the connection
+	try:
+		del __cons[name]
+		return True
+	except KeyError:
+		return False
